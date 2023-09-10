@@ -1,0 +1,44 @@
+* {
+    margin: 10px;
+    padding: 0;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    box-sizing: border-box;
+    box-shadow: inset;
+
+}
+body{
+    background: #806A7F;
+}
+.container{
+    background-color: aliceblue;
+    width: 90%;
+    max-width: 600px;
+    margin: 100px auto 0;
+    border-radius: 10px;
+    border:12px outset #402a3f;
+    padding: 30px;
+}
+.container h1{
+    font-size:25px;
+    color: #402a3f;
+    font-weight: 600;
+    font-style:italic
+}
+
+.quiz{
+    padding: 15px 0;
+}
+.quiz h2{
+    font-size: 18px;
+    color:#402a3f;
+}
+.btn{
+    background-color: aliceblue;
+    color:#402a3f;
+    font-weight: 600;
+    width: 90%;
+    border:2px solid #402a3f;
+    padding: 10px;
+    margin:10px 0;
+    text-align: left;
+}

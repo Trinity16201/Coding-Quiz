@@ -1,6 +1,7 @@
 var timeEl = document.querySelector(".time");
 var secondsLeft = 60;
 function setTime() {
+  // document.getElementById("startgame").addEventListener("click",function()){
   // Sets interval in variable
   var timerInterval = setInterval(function () {
     secondsLeft--;
@@ -17,7 +18,7 @@ function setTime() {
     //   clearInterval(timerInterval);
     //   displayMessage();
     // }
-
+  
   }, 1000);
 }
 

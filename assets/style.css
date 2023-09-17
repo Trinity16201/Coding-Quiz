@@ -63,7 +63,7 @@ body {
     font-size: 100px;
 }
 /*need to hide this submit button- contains on click information*/
-#submit.hide {
+#checkanswer {
     display: none;
     /* background-color: aliceblue;
     color: #402a3f;

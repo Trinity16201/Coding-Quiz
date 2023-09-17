@@ -10,7 +10,7 @@ function setTime() {
       // Stops execution of action at set interval
       clearInterval(timerInterval);
       // Calls function to create and append image
-      sendMessage();
+      sendMessage("Game Over!");
     }
     // else{
     //   timeEl.textContent="";
@@ -64,8 +64,10 @@ function displayQuestion() {
 }
 
 function selectAnswer(choice) {
-  if (choice === questions[currentQuestion].answer) {
+  if (choice === questions[currentQuestion].answer){
     score++;
+  } else{
+    secondsLeft= secondsLeft -10
   }
   currentQuestion++;
   if (currentQuestion < questions.length) {
@@ -74,45 +76,12 @@ function selectAnswer(choice) {
     endQuiz();
   }
 
-  //Penalty area//
-  // check if user guessed wrong
-  // if (buttonEl.value !== questions[currentQuestion].answer) {
-  //   // penalize time
-  //   time -= 10;
-
-  //   if (time < 0) {
-  //     time = 0;
-  //   }
-
-  //   // display new time on page
-  //   timerEl.textContent = time;
-  // }
-  var incorrectAnswer = !questions.answer;//NEEDED-can i take things within JS?
-  let totalTime = secondsLeft;
-  const penaltyTime = 10;
-  // answerElement = getElementById(questions + "answer")
-  function handleWrongAnswer(choice) {
-    if (choice === incorrectAnswer)
-      totalTime -= penaltyTime; // Subtract penaltyTime from totalTime
-    // Update the displayed timer
-    updateTimerDisplay();
-  }
-  function updateTimerDisplay() {
-    if (incorrectAnswer === true)
-      time = -penaltyTime;
-    else if (timeEl < 0) {
-      timeEl = 0;
-
-    }
-    timeEl.textContent = handleWrongAnswer();
-    console.log(`Time remaining: ${secondsLeft} seconds`);
-  }
-  handleWrongAnswer();
-  updateTimerDisplay();
 }
-function endQuiz() {
-  alert(`Quiz ended! Your score is ${score}/${questions.length}`);
-}
+
+  
+  function endQuiz() {
+    alert(`Quiz ended! Your score is ${score}/${questions.length}`);
+  }
 function startQuiz() {
   displayQuestion();
 }

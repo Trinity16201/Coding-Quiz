@@ -23,9 +23,7 @@ function setTime() {
 
 
 setTime();
-// function displayMessage(){
-//   var gameOver= "Game Over!"
-// }
+
 const questions = [
   {
     question: "What is an array?",
@@ -65,7 +63,6 @@ function displayQuestion() {
   });
 }
 
-
 function selectAnswer(choice) {
   if (choice === questions[currentQuestion].answer) {
     score++;
@@ -76,6 +73,42 @@ function selectAnswer(choice) {
   } else {
     endQuiz();
   }
+
+  //Penalty area//
+  // check if user guessed wrong
+  // if (buttonEl.value !== questions[currentQuestion].answer) {
+  //   // penalize time
+  //   time -= 10;
+
+  //   if (time < 0) {
+  //     time = 0;
+  //   }
+
+  //   // display new time on page
+  //   timerEl.textContent = time;
+  // }
+  var incorrectAnswer = !questions.answer;//NEEDED-can i take things within JS?
+  let totalTime = secondsLeft;
+  const penaltyTime = 10;
+  // answerElement = getElementById(questions + "answer")
+  function handleWrongAnswer(choice) {
+    if (choice === incorrectAnswer)
+      totalTime -= penaltyTime; // Subtract penaltyTime from totalTime
+    // Update the displayed timer
+    updateTimerDisplay();
+  }
+  function updateTimerDisplay() {
+    if (incorrectAnswer === true)
+      time = -penaltyTime;
+    else if (timeEl < 0) {
+      timeEl = 0;
+
+    }
+    timeEl.textContent = handleWrongAnswer();
+    console.log(`Time remaining: ${secondsLeft} seconds`);
+  }
+  handleWrongAnswer();
+  updateTimerDisplay();
 }
 function endQuiz() {
   alert(`Quiz ended! Your score is ${score}/${questions.length}`);
@@ -84,24 +117,3 @@ function startQuiz() {
   displayQuestion();
 }
 window.onload = startQuiz;
-
-//Penalty area//
-var correctAnswer = question.answer;//NEEDED-can i take things within JS?
-let totalTime = secondsLeft;
-const penaltyTime = 10;
-// answerElement = getElementById(questions + "answer")
-function handleWrongAnswer() {
-  if (choice === correctAnswer)
-    totalTime -= penaltyTime; // Subtract penaltyTime from totalTime
-  // Update the displayed timer
-  updateTimerDisplay();
-}
-function updateTimerDisplay() {
-  // Update the timer display with the new totalTime value
-  console.log(`Time remaining: ${secondsLeft} seconds`);
-}
-// Example usage
-handleWrongAnswer(); // Simulate a wrong answer
-
-
-

@@ -64,10 +64,10 @@ function displayQuestion() {
 }
 
 function selectAnswer(choice) {
-  if (choice === questions[currentQuestion].answer){
+  if (choice === questions[currentQuestion].answer) {
     score++;
-  } else{
-    secondsLeft= secondsLeft -10
+  } else {
+    secondsLeft = secondsLeft - 10
   }
   currentQuestion++;
   if (currentQuestion < questions.length) {
@@ -78,11 +78,15 @@ function selectAnswer(choice) {
 
 }
 
-  
-  function endQuiz() {
-    alert(`Quiz ended! Your score is ${score}/${questions.length}`);
-  }
+
+function endQuiz() {
+  alert(`Quiz ended! Your score is ${score}/${questions.length}`);
+}
 function startQuiz() {
   displayQuestion();
 }
 window.onload = startQuiz;
+
+
+
+

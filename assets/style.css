@@ -62,18 +62,19 @@ body {
     text-align: center;
     font-size: 100px;
 }
-
-#submit {
-    background-color: aliceblue;
+/*need to hide this submit button- contains on click information*/
+#submit.hide {
+    display: none;
+    /* background-color: aliceblue;
     color: #402a3f;
     font-weight: 600;
     width: 30%;
     border: 10px solid #402a3f;
     padding: 10px;
     margin: 10px 0;
-    text-align: center;
+    text-align: center; */
 }
 
-#submit:hover {
+/* #submit:hover {
     background-color: #f1c0ee;
-}
+} */

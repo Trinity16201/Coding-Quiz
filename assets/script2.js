@@ -1,16 +1,19 @@
 //for scoreboard//
-var initialsInput = document.querySelector("#initials");
+var initialsInput = document.querySelector("#initialInput");
 var submitButton = document.querySelector("#submitscore");
 
-var initials = localStorage.getItem("initials");
-initials.textContent = initials;
+var initials = localStorage.getItem("initialinput");
 
 submitButton.addEventListener("click", function () {
-    if (initials === "")
-        diplayMessage("Thank you for submitting!")
-    localStorage.setItem("initials", initials)
+    initials=initialsInput.value 
+    console.log(initials)
+    if (initials !== "") {
+        initialsInput.textContent = initials;
+        localStorage.setItem(initials,"tempscore")
+    }
+
 });
-renderSignUp();
+renderSubmission();
 
 function renderSubmission() {
     var initials = initialsInput.value;
@@ -18,6 +21,3 @@ function renderSubmission() {
         return;
     }
 }
-
-
-//function displayMessage()

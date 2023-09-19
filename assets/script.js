@@ -1,27 +1,18 @@
 var timeEl = document.querySelector(".time");
 var secondsLeft = 60;
+var timerInterval;
 function setTime() {
-  // Sets interval in variable
-  var timerInterval = setInterval(function () {
+  timerInterval = setInterval(function () {
     secondsLeft--;
     timeEl.textContent = secondsLeft + " seconds left.";
 
     if (secondsLeft === 0) {
-      // Stops execution of action at set interval
       clearInterval(timerInterval);
-      // Calls function to create and append image
-      sendMessage("Game Over!");
     }
-    // else{
-    //   timeEl.textContent="";
-    //   clearInterval(timerInterval);
-    //   displayMessage();
-    // }
 
+  
   }, 1000);
 }
-
-
 setTime();
 
 const questions = [
@@ -51,6 +42,7 @@ let currentQuestion = 0;
 let score = 0;
 // Function to display the current question and choices
 function displayQuestion() {
+  console.log(currentQuestion)
   const questionElement = document.getElementById("question");
   const choicesElement = document.getElementById("choices");
   questionElement.textContent = questions[currentQuestion].question;
@@ -60,6 +52,7 @@ function displayQuestion() {
     button.textContent = choice;
     button.addEventListener("click", () => selectAnswer(choice));
     choicesElement.appendChild(button);
+
   });
 }
 
@@ -81,12 +74,12 @@ function selectAnswer(choice) {
 
 function endQuiz() {
   alert(`Quiz ended! Your score is ${score}/${questions.length}`);
+  clearInterval(timerInterval)
 }
 function startQuiz() {
   displayQuestion();
 }
 window.onload = startQuiz;
-
 
 
 

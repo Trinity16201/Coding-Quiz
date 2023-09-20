@@ -1,7 +1,10 @@
+let startButton = document.querySelector('#startGame');
 var timeEl = document.querySelector(".time");
 var secondsLeft = 60;
 var timerInterval;
-function setTime() {
+
+
+startButton.addEventListener('click',function(){
   timerInterval = setInterval(function () {
     secondsLeft--;
     timeEl.textContent = secondsLeft + " seconds left.";
@@ -9,12 +12,15 @@ function setTime() {
     if (secondsLeft === 0) {
       clearInterval(timerInterval);
     }
-
+    $('#startGame').click(function(){
+      $('#main').css('hidden','visibility');
+    })
   
   }, 1000);
-}
-setTime();
-
+})
+// document.getElementById('startGame').onclick = function() {
+//   document.getElementById('question'+'choices').style.visibility = 'visible';
+// }
 const questions = [
   {
     question: "What is an array?",
@@ -76,10 +82,10 @@ function endQuiz() {
   alert(`Quiz ended! Your score is ${score}/${questions.length}`);
   clearInterval(timerInterval)
 }
-function startQuiz() {
+function beginQuiz() {
   displayQuestion();
 }
-window.onload = startQuiz;
+window.onload = beginQuiz;
 
 
 

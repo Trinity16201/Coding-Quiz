@@ -12,29 +12,7 @@ body {
     background: #806A7F;
 }
 
-#startQ {
-    font-style: italic;
-}
 
-.start-quiz {
-    background-color: aliceblue;
-    width: 95%;
-    max-width: 600px;
-    margin: 10px auto 0;
-    border-radius: 10px;
-    border: 12px outset #201520;
-    padding: 20px;
-    display: flex;
-    text-align: center;
-    font-size: 50px;
-    cursor: pointer;
-}
-
-.start-quiz:hover {
-    background-color: rgb(255, 251, 248);
-    color: #201520;
-    box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
-}
 
 .timer-count {
     padding: 5px;
@@ -46,10 +24,12 @@ body {
     display: inline-flex;
 }
 #question{
+    visibility: hidden;
     font-size: 40px;
     font-style: oblique;
 }
 #choices {
+    visibility: hidden;
     padding: 15px 0;
     background-color: aliceblue;
     width: 95%;
@@ -57,24 +37,12 @@ body {
     margin: 10px auto 0;
     border-radius: 10px;
     border: 12px outset #201520;
-    display: flex;
+    display:flex;
     flex-direction: column;
     text-align: center;
     font-size: 100px;
 }
-/*need to hide this submit button- contains on click information*/
+
 #checkanswer {
     display: none;
-    /* background-color: aliceblue;
-    color: #402a3f;
-    font-weight: 600;
-    width: 30%;
-    border: 10px solid #402a3f;
-    padding: 10px;
-    margin: 10px 0;
-    text-align: center; */
 }
-
-/* #submit:hover {
-    background-color: #f1c0ee;
-} */

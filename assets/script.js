@@ -4,7 +4,7 @@ var secondsLeft = 60;
 var timerInterval;
 
 
-startButton.addEventListener('click',function(){
+startButton.addEventListener('click', function () {
   timerInterval = setInterval(function () {
     secondsLeft--;
     timeEl.textContent = secondsLeft + " seconds left.";
@@ -12,15 +12,19 @@ startButton.addEventListener('click',function(){
     if (secondsLeft === 0) {
       clearInterval(timerInterval);
     }
-    $('#startGame').click(function(){
-      $('#main').css('hidden','visibility');
+    $('#startGame').click(function () {
+      $('#main').css('hidden', 'visibility');
     })
-  
+
   }, 1000);
+  startButton.style.display = 'none';
+  document.getElementById('question').textContent - questions[0].question;
+  document.getElementById('question').style.visibility = 'visible';
+  document.getElementById('choices').style.visibility = 'visible';
+  for (const choice of questions[0].choices) {
+    document.getElementById('choices').append(choices);
+  }
 })
-// document.getElementById('startGame').onclick = function() {
-//   document.getElementById('question'+'choices').style.visibility = 'visible';
-// }
 const questions = [
   {
     question: "What is an array?",
@@ -80,8 +84,14 @@ function selectAnswer(choice) {
 
 function endQuiz() {
   alert(`Quiz ended! Your score is ${score}/${questions.length}`);
-  clearInterval(timerInterval)
+  if (window.confirm("Do you want to go to the scoreboard?"))
+    document.location = "file:///C:/Users/Trini/OneDrive/Desktop/coding/homework/Coding-Quiz/scoreboard.html";
+  else{
+    window.location ="https://trinity16201.github.io/Coding-Quiz/";
+  }
+  clearInterval(timerInterval);
 }
+
 function beginQuiz() {
   displayQuestion();
 }

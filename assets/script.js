@@ -85,7 +85,7 @@ function selectAnswer(choice) {
 function endQuiz() {
   alert(`Quiz ended! Your score is ${score}/${questions.length}`);
   if (window.confirm("Do you want to go to the scoreboard?"))
-    document.location = "file:///C:/Users/Trini/OneDrive/Desktop/coding/homework/Coding-Quiz/scoreboard.html";
+    window.location = "file:///C:/Users/Trini/OneDrive/Desktop/coding/homework/Coding-Quiz/scoreboard.html";
   else{
     window.location ="https://trinity16201.github.io/Coding-Quiz/";
   }

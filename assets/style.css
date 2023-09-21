@@ -12,7 +12,17 @@ body {
     background: #806A7F;
 }
 
+#startGame {
+font-size: 50px;
+padding: 10px;
+border-radius: 10px;
+}
 
+#startGame:hover{
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+    background-color:#2c0d40;
+    color: #fff;
+}
 
 .timer-count {
     padding: 5px;
@@ -30,17 +40,17 @@ body {
 }
 #choices {
     visibility: hidden;
-    padding: 15px 0;
+    padding: 25px 0;
     background-color: aliceblue;
-    width: 95%;
+    width: 50%;
     max-width: 600px;
     margin: 10px auto 0;
     border-radius: 10px;
     border: 12px outset #201520;
-    display:flex;
     flex-direction: column;
     text-align: center;
-    font-size: 100px;
+    font-size: 20px;
+    display: flex;
 }
 
 #checkanswer {

@@ -26,9 +26,7 @@ startButton.addEventListener('click', function () {
   document.getElementById('question').textContent - questions[0].question;
   document.getElementById('question').style.visibility = 'visible';
   document.getElementById('choices').style.visibility = 'visible';
-  // for (const choice of questions[0].choices) {
-  //   document.getElementById('choices').append(choice);
-  // }
+
 })
 const questions = [
   {
@@ -91,13 +89,13 @@ function endQuiz() {
   var submitButton = document.querySelector("#submitscore");
   var initialsInput = document.querySelector("#initialInput");
   highScore.setAttribute("class", "show");
-  submitButton.addEventListener("click", function () {
+  submitButton.addEventListener("click", function (e) {
+    e.preventDefault()
     initials=initialsInput.value 
     console.log(initials)
     if (initials !== "") {
         initialsInput.textContent = initials;
         localStorage.setItem(initials,"tempscore")
-        
     }
    
   });

@@ -1,6 +1,7 @@
+
 //for scoreboard//
 var initialsInput = document.querySelector("#initialInput");
-var submitButton = document.querySelector("#submitscore");
+
 
 var initials = localStorage.getItem("initialinput");
 

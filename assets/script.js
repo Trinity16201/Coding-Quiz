@@ -1,8 +1,13 @@
 let startButton = document.querySelector('#startGame');
+let main = document.querySelector("#main");
 var timeEl = document.querySelector(".time");
 var secondsLeft = 60;
 var timerInterval;
+let highScore= document.querySelector("#highScore");
+var enterInitials = document.querySelector("#enterInitials")
+var playerCount= document.querySelector("#player-count");
 
+var players=[];
 
 startButton.addEventListener('click', function () {
   timerInterval = setInterval(function () {
@@ -12,8 +17,8 @@ startButton.addEventListener('click', function () {
     if (secondsLeft === 0) {
       clearInterval(timerInterval);
     }
-    $('#startGame').click(function () {
-      $('#main').css('hidden', 'visibility');
+   startButton.addEventListener("click",function () {
+      main.setAttribute('style', 'visibility=hidden');
     })
 
   }, 1000);
@@ -21,9 +26,9 @@ startButton.addEventListener('click', function () {
   document.getElementById('question').textContent - questions[0].question;
   document.getElementById('question').style.visibility = 'visible';
   document.getElementById('choices').style.visibility = 'visible';
-  for (const choice of questions[0].choices) {
-    document.getElementById('choices').append(choices);
-  }
+  // for (const choice of questions[0].choices) {
+  //   document.getElementById('choices').append(choice);
+  // }
 })
 const questions = [
   {
@@ -83,42 +88,45 @@ function selectAnswer(choice) {
 
 
 function endQuiz() {
-  alert(`Quiz ended! Your score is ${score}/${questions.length}`);
-  if (window.confirm("Do you want to go to the scoreboard?"))
-    window.location = "file:///C:/Users/Trini/OneDrive/Desktop/coding/homework/Coding-Quiz/scoreboard.html";
-  else{
-    window.location ="https://trinity16201.github.io/Coding-Quiz/";
-  }
-  clearInterval(timerInterval);
-}
-
-function beginQuiz() {
-  displayQuestion();
-}
-window.onload = beginQuiz;
-
-//for scoreboard//
-var initialsInput = document.querySelector("#initialInput");
-var submitButton = document.querySelector("#submitscore");
-
-var initials = localStorage.getItem("initialinput");
-
-submitButton.addEventListener("click", function () {
+  var submitButton = document.querySelector("#submitscore");
+  var initialsInput = document.querySelector("#initialInput");
+  highScore.setAttribute("class", "show");
+  submitButton.addEventListener("click", function () {
     initials=initialsInput.value 
     console.log(initials)
     if (initials !== "") {
         initialsInput.textContent = initials;
         localStorage.setItem(initials,"tempscore")
+        
     }
+   
+  });
 
-});
-renderSubmission();
-
-function renderSubmission() {
-    var initials = initialsInput.value;
-    if (!initials) {
-        return;
-    }
+  function renderInitials() {
+    enterInitials.innerHTML = "";
+    playerCount.textContent = players.length;
+    for (var i = 0; i < players.length; i++) {
+      var player = players[i];
+      var li = document.createElement("li");
+      li.textContent = player;
+      li.setAttribute("data-index",i);
+      enterInitials.appendChild(li);
+  }
 }
+  renderInitials();
+  
+  // alert(`Quiz ended! Your score is ${score}/${questions.length}`);
+  // if (window.confirm("Do you want to go to the scoreboard?"))
+  //   window.location = "file:///C:/Users/Trini/OneDrive/Desktop/coding/homework/Coding-Quiz/scoreboard.html";
+
+  clearInterval(timerInterval);
+}
+
+function beginQuiz() {
+  highScore.setAttribute("class", "hidden");
+  displayQuestion();
+}
+window.onload = beginQuiz;
+
 
 

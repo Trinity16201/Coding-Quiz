@@ -3,11 +3,11 @@ let main = document.querySelector("#main");
 var timeEl = document.querySelector(".time");
 var secondsLeft = 60;
 var timerInterval;
-let highScore= document.querySelector("#highScore");
+let highScore = document.querySelector("#highScore");
 var enterInitials = document.querySelector("#enterInitials")
-var playerCount= document.querySelector("#player-count");
+var playerCount = document.querySelector("#player-count");
 
-var players=[];
+var players = [];
 
 startButton.addEventListener('click', function () {
   timerInterval = setInterval(function () {
@@ -17,7 +17,7 @@ startButton.addEventListener('click', function () {
     if (secondsLeft === 0) {
       clearInterval(timerInterval);
     }
-   startButton.addEventListener("click",function () {
+    startButton.addEventListener("click", function () {
       main.setAttribute('style', 'visibility=hidden');
     })
 
@@ -26,9 +26,7 @@ startButton.addEventListener('click', function () {
   document.getElementById('question').textContent - questions[0].question;
   document.getElementById('question').style.visibility = 'visible';
   document.getElementById('choices').style.visibility = 'visible';
-  // for (const choice of questions[0].choices) {
-  //   document.getElementById('choices').append(choice);
-  // }
+
 })
 const questions = [
   {
@@ -91,33 +89,17 @@ function endQuiz() {
   var submitButton = document.querySelector("#submitscore");
   var initialsInput = document.querySelector("#initialInput");
   highScore.setAttribute("class", "show");
-  submitButton.addEventListener("click", function () {
-    initials=initialsInput.value 
+  submitButton.addEventListener("click", function (e) {
+    e.preventDefault()
+    initials = initialsInput.value
     console.log(initials)
     if (initials !== "") {
-        initialsInput.textContent = initials;
-        localStorage.setItem(initials,"tempscore")
-        
+      initialsInput.textContent = initials;
+      localStorage.setItem(initials, "tempscore")
     }
-   
+
   });
 
-  function renderInitials() {
-    enterInitials.innerHTML = "";
-    playerCount.textContent = players.length;
-    for (var i = 0; i < players.length; i++) {
-      var player = players[i];
-      var li = document.createElement("li");
-      li.textContent = player;
-      li.setAttribute("data-index",i);
-      enterInitials.appendChild(li);
-  }
-}
-  renderInitials();
-  
-  // alert(`Quiz ended! Your score is ${score}/${questions.length}`);
-  // if (window.confirm("Do you want to go to the scoreboard?"))
-  //   window.location = "file:///C:/Users/Trini/OneDrive/Desktop/coding/homework/Coding-Quiz/scoreboard.html";
 
   clearInterval(timerInterval);
 }

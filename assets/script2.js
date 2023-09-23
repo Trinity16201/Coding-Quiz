@@ -1,24 +1,17 @@
 
 //for scoreboard//
-var initialsInput = document.querySelector("#initialInput");
 
+const key = document.getElementById("#initialInput");
 
-var initials = localStorage.getItem("initialinput");
-
-submitButton.addEventListener("click", function () {
-    initials=initialsInput.value 
-    console.log(initials)
-    if (initials !== "") {
-        initialsInput.textContent = initials;
-        localStorage.setItem(initials,"tempscore")
-    }
-
-});
-renderSubmission();
-
-function renderSubmission() {
-    var initials = initialsInput.value;
-    if (!initials) {
-        return;
-    }
+document.querySelector("#submitscore").addEventListener("click",()=>{
+    localStorage.setItem("initials", "#initialInput");
+    document.getElementById("#playerCount").append("Thanks for playing!")
+})
+var players = [];
+var enterInitials = document.querySelector("#enterInitials")
+var playerCount = document.querySelector("#playerCount")
+function renderPlayers(){
+enterInitials.innerHTML ="";
+playerCount.textContent = players.length;
 }
+

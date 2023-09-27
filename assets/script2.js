@@ -1,17 +1,21 @@
+var playerlist = document.getElementById("playerlist")
+//function for looping through player submissions
+function renderPlayers(players) {
+console.log(players)
+    for (var i = 0; i < players.length; i++) {
+      var player = players[i];
+  
+      var li = document.createElement("li");
+      li.textContent = player.thisInitials + ": " + player.thisScore
+      playerlist.appendChild(li);
+    }
 
-//for scoreboard//
-
-const key = document.getElementById("#initialInput");
-
-document.querySelector("#submitscore").addEventListener("click",()=>{
-    localStorage.setItem("initials", "#initialInput");
-    document.getElementById("#playerCount").append("Thanks for playing!")
-})
-var players = [];
-var enterInitials = document.querySelector("#enterInitials")
-var playerCount = document.querySelector("#playerCount")
-function renderPlayers(){
-enterInitials.innerHTML ="";
-playerCount.textContent = players.length;
+  }
+    //Calling stored players to the page
+  function init() {
+    var storedPlayers = JSON.parse(window.localStorage.getItem("playerScores")) || [];
+    renderPlayers(storedPlayers);
 }
+init();
+
 

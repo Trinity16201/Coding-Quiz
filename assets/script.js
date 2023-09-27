@@ -8,7 +8,7 @@ var enterInitials = document.querySelector("#enterInitials")
 var playerCount = document.querySelector("#player-count");
 
 var players = [];
-
+//function to start quiz-switch from button to quiz section//
 startButton.addEventListener('click', function () {
   timerInterval = setInterval(function () {
     secondsLeft--;
@@ -68,7 +68,7 @@ function displayQuestion() {
 
   });
 }
-
+//Q&A display function
 function selectAnswer(choice) {
   if (choice === questions[currentQuestion].answer) {
     score++;
@@ -83,8 +83,8 @@ function selectAnswer(choice) {
   }
 
 }
-
-
+//function to store scores and name submission into local storage
+let allScores= JSON.parse(window.localStorage.getItem("playerScores")) || [];
 function endQuiz() {
   var submitButton = document.querySelector("#submitscore");
   var initialsInput = document.querySelector("#initialInput");
@@ -95,9 +95,14 @@ function endQuiz() {
     console.log(initials)
     if (initials !== "") {
       initialsInput.textContent = initials;
-      localStorage.setItem(initials, "tempscore")
+      let newScore = {
+        thisScore: score, thisInitials: initials
+      }
+      console.log(allScores)
+      allScores.push(newScore)
+      window.localStorage.setItem("playerScores", JSON.stringify(allScores))
     }
-
+    window.location.href = "scoreboard.html"
   });
 
 
